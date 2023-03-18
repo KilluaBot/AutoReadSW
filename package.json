@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@adiwajshing/baileys": "github:amiruldev20/Baileys",
+    "express": "latest",
+    "qrcode": "latest",
+    "qrcode-terminal": "latest"
+  }
+}
