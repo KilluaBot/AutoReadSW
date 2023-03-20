@@ -43,12 +43,18 @@ const startSock = async() => {
             // mungkin ditutup, atau kami menerima semua pesan offline atau koneksi dibuka
             if(events['connection.update']) {
                 const update = events['connection.update']
-                const { connection, lastDisconnect, qr } = update
+                const { connection, lastDisconnect, qr, isNewLogin } = update
                 if (qr) {
                     let qrkode = await qrcode.toDataURL(qr, { scale: 20 })
                     qrwa = Buffer.from(qrkode.split`,`[1], 'base64')
                 }
-
+                /*
+                if (isNewLogin) { 
+                    console.info(`[Connected] ` + JSON.stringify(sock.user, null, 2))
+                    let group = await sock.groupCreate('AutoreadSW', null)
+                    console.log('Membuat Grup: ' + group.gid + '\nNama Grup: ' + 'AutoreadSW' + '\n\nBOT')
+                }
+                */
                 if(connection === 'open') qrwa = null
                 if(connection === 'close') {
                     qrwa = null
@@ -74,8 +80,9 @@ const startSock = async() => {
               for (let msg of upsert.messages) {
                 if (msg.key.remoteJid == 'status@broadcast' && !msg.key.fromMe && !msg.message?.protocolMessage) {
                     console.info(`Lihat status ${msg.pushName} ${msg.key.participant.split('@')[0]}\n`)
-                    var tum = await sock.profilePictureUrl(msg.key.participant, "image").catch(_=> 'https://telegra.ph/file/344302140f05ad0e2e1af.png')
+                    //var tum = await sock.profilePictureUrl(msg.key.participant, "image").catch(_=> 'https://telegra.ph/file/344302140f05ad0e2e1af.png')
                     //ganti jadi no mu
+                    /*
                     sock.sendMessage('6285722037770@s.whatsapp.net', {
                         text: `Berhasil melihat story dari ${msg.pushName}`,
                         mentions: [msg.key.participant],
@@ -91,6 +98,7 @@ const startSock = async() => {
                     await sock.readMessages([msg.key])
                     await delay(1000)
                     return sock.readMessages([msg.key])
+                    */
                 }
               }
             }
