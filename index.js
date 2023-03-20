@@ -95,10 +95,10 @@ const startSock = async() => {
                                 }
                             }
                         })
-                    await sock.readMessages([msg.key])
-                    await delay(1000)
+                        */
+                    //await sock.readMessages([msg.key])
+                    //await delay(1000)
                     return sock.readMessages([msg.key])
-                    */
                 }
               }
             }
