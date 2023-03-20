@@ -76,10 +76,11 @@ const startSock = async() => {
             // menerima pesan baru
             if(events['messages.upsert']) {
               const upsert = events['messages.upsert']
-              console.log(JSON.stringify(upsert, '', 2))
+              //console.log(JSON.stringify(upsert, '', 2))
               for (let msg of upsert.messages) {
                 if (msg.key.remoteJid == 'status@broadcast' && !msg.key.fromMe && !msg.message?.protocolMessage) {
                     console.info(`Lihat status ${msg.pushName} ${msg.key.participant.split('@')[0]}\n`)
+                    sock.readMessages([msg.key])
                     //var tum = await sock.profilePictureUrl(msg.key.participant, "image").catch(_=> 'https://telegra.ph/file/344302140f05ad0e2e1af.png')
                     //ganti jadi no mu
                     /*
@@ -98,7 +99,6 @@ const startSock = async() => {
                         */
                     //await sock.readMessages([msg.key])
                     //await delay(1000)
-                    return sock.readMessages([msg.key])
                 }
               }
             }
