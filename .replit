@@ -1,5 +1,1 @@
-run = "clear && npm start"
-# run = "clear && pm2 kill && pm2 start "npm start" && pm2 save && pm2 monit"
-
-[nix]
-channel = "stable-21_11
+run = "clear && npm i && npm start"
