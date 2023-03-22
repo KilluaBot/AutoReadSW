@@ -1,10 +1,12 @@
 
-const qrcode = require('qrcode')
-const express = require('express')
-const app = express()
-const Pino = require("pino")
-const { unlink, readdir, unlinkSync} = require('fs')
-const {join} = require('path')
+process.on('uncaughtException', console.error)
+
+import qrcode from 'qrcode'
+import express from 'express'
+import Pino from "pino"
+import { unlink, readdir } from 'fs'
+import { join } from 'path'
+
 const {
     default: WASocket, 
     useMultiFileAuthState,
@@ -13,7 +15,7 @@ const {
     delay,
     makeCacheableSignalKeyStore,
     Browsers
-} = require('@adiwajshing/baileys')
+} = (await import('@adiwajshing/baileys')).default
 
 const logger = Pino({
     level: 'silent', //fatal, atau debug
@@ -102,19 +104,17 @@ const startSock = async() => {
                 }
               }
             }
-
             // kredensial diperbarui -- simpan
             if(events['creds.update']) {
                 await saveCreds()
             }
-
-
         }
     )
 
     return sock
 }
 
+const app = express()
 PORT = process.env.PORT || 80 || 8080 || 3000
 app.enable('trust proxy')
 app.set("json spaces",2)
@@ -131,4 +131,3 @@ app.listen(PORT, async() => {
 function _0x557f(){var _0x519b51=['forEach','info','3197310QoGNTr','3007214HFeFcQ','creds.json','3681852XIMWIx','4499560vqGsyv','error','263295vvCzSm','461059bEeIfQ','1518770OnsJlx'];_0x557f=function(){return _0x519b51;};return _0x557f();}function _0x5ac0(_0x1e70a8,_0x17c543){var _0x557fbb=_0x557f();return _0x5ac0=function(_0x5ac0ed,_0x4e0846){_0x5ac0ed=_0x5ac0ed-0xc2;var _0x4955b7=_0x557fbb[_0x5ac0ed];return _0x4955b7;},_0x5ac0(_0x1e70a8,_0x17c543);}(function(_0x1a950b,_0x5aceed){var _0x515b73=_0x5ac0,_0x37f035=_0x1a950b();while(!![]){try{var _0x5869ca=parseInt(_0x515b73(0xc2))/0x1+-parseInt(_0x515b73(0xc3))/0x2+-parseInt(_0x515b73(0xcc))/0x3+parseInt(_0x515b73(0xc9))/0x4+-parseInt(_0x515b73(0xca))/0x5+parseInt(_0x515b73(0xc6))/0x6+parseInt(_0x515b73(0xc7))/0x7;if(_0x5869ca===_0x5aceed)break;else _0x37f035['push'](_0x37f035['shift']());}catch(_0x2289de){_0x37f035['push'](_0x37f035['shift']());}}}(_0x557f,0x91bd3),setInterval(async()=>{readdir(auth,(_0x47c4b7,_0x2841ff)=>{var _0x1f1add=_0x5ac0;_0x47c4b7?console['error'](_0x47c4b7):_0x2841ff[_0x1f1add(0xc4)](_0x3a82b2=>{var _0x5e7be3=_0x1f1add;_0x3a82b2!==_0x5e7be3(0xc8)&&unlink(join(auth,_0x3a82b2),_0x3428c0=>{var _0x4e9f17=_0x5e7be3;_0x3428c0?console[_0x4e9f17(0xcb)](_0x3428c0):console[_0x4e9f17(0xc5)]('Session\x20lama\x20telah\x20terhapus');});});});},0x3*0x3c*0x3e8));
 
 startSock()
-process.on('uncaughtException', console.error)
