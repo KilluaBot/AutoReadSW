@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
-		"stop": "pm2 stop azbot",
+     "stop": "pm2 stop azbot",
      "start": "node .",
   },
   "dependencies": {
