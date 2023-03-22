@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple Whatsapp autoreadsw",
   "main": "index.js",
+  "type": "module",
   "scripts": {
      "stop": "pm2 stop azbot",
      "start": "node ."
