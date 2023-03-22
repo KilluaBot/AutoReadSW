@@ -1,4 +1,9 @@
 {
+  "main": "index.js",
+  "scripts": {
+		"stop": "pm2 stop azbot",
+     "start": "node .",
+  },
   "dependencies": {
     "@adiwajshing/baileys": "github:amiruldev20/Baileys",
     "express": "latest",
