@@ -1,17 +1,20 @@
 {
-  "name": "autoreadsw",
+  "name": "alok",
   "version": "1.0.0",
-  "description": "Simple Whatsapp autoreadsw",
-  "main": "index.js",
-  "type": "module",
+  "license": "MIT",
   "scripts": {
-     "stop": "pm2 stop azbot",
-     "start": "node ."
+    "start": "node index.js"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "github:amiruldev20/Baileys",
+    "@adiwajshing/baileys": "npm:@whiskeysockets/baileys",
+    "@adiwajshing/keyed-db": "^0.2.4",
     "express": "latest",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "performance-now": "^2.1.0",
+    "pino": "^8.14.1",
     "qrcode": "latest",
-    "qrcode-terminal": "latest"
+    "qrcode-terminal": "^0.12.0",
+    "util": "^0.12.5"
   }
 }
